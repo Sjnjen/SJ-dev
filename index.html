@@ -179,22 +179,19 @@
     .btn-primary { background: #d4af37; color: #010101; box-shadow: 0 0 45px #d4af37; border: none; }
     .btn:hover { transform: translateY(-3px); box-shadow: 0 15px 40px rgba(212,175,55,0.4); }
 
-    /* Logo placeholder */
-    .logo-placeholder {
+    /* Logo container */
+    .logo-container {
       width: 120px; height: 120px; border-radius: 50%;
-      border: 2px solid rgba(212,175,55,0.5);
+      border: 2px solid rgba(212,175,55,0.6);
       background: rgba(10,10,18,0.6); backdrop-filter: blur(20px);
       display: flex; align-items: center; justify-content: center;
-      font-family: 'Orbitron', sans-serif; font-size: 2rem; font-weight: 900;
-      color: #d4af37; box-shadow: 0 0 40px rgba(212,175,55,0.3);
+      box-shadow: 0 0 40px rgba(212,175,55,0.3);
       overflow: hidden; position: relative;
+      flex-shrink: 0;
     }
-    .logo-placeholder img {
-      width: 100%; height: 100%; object-fit: cover; position: absolute;
-      top: 0; left: 0;
-    }
-    .logo-placeholder .logo-fallback {
-      z-index: 1;
+    .logo-container img {
+      width: 100%; height: 100%; object-fit: cover;
+      position: absolute; top: 0; left: 0;
     }
 
     .carousel-container {
@@ -342,8 +339,6 @@
       100% { transform: translate(0, 0) rotate(0deg); }
     }
     footer { text-align: center; padding: 2rem; font-family: 'JetBrains Mono', monospace; font-size: 0.85rem; color: #5a5240; }
-
-    /* Contact info cards */
     .contact-info-card {
       display: flex; align-items: center; gap: 1rem;
       background: rgba(12,12,20,0.4); backdrop-filter: blur(22px);
@@ -392,9 +387,17 @@
     <section class="hero section" id="home">
       <div class="translucent-text" style="top:10%; left:0;">&lt;DEV&gt;</div>
       <div style="display:flex; align-items:center; gap:2rem; flex-wrap:wrap; margin-bottom:2rem;">
-        <div class="logo-placeholder" id="hero-logo">
-          <span class="logo-fallback">SJ</span>
+        
+        <!-- ============================================ -->
+        <!-- LOGO IMAGE - REPLACE SRC HERE               -->
+        <!-- Change "logo.png" to your image filename     -->
+        <!-- OR use a full URL like "https://example.com/logo.jpg" -->
+        <!-- ============================================ -->
+        <div class="logo-container">
+          <img src="logo.png" alt="SJ Dev Logo">
         </div>
+        <!-- ============================================ -->
+        
         <div>
           <h1 style="font-size:clamp(1.5rem,4vw,2.5rem); margin-bottom:0.5rem;">SJ DEV</h1>
           <p style="font-family:'JetBrains Mono',monospace; color:#b8a16b;">Premium Web Developer</p>
@@ -474,7 +477,7 @@
       </div>
     </section>
 
-    <!-- CONTACT with email & phone -->
+    <!-- CONTACT -->
     <section class="section" id="contact">
       <h2>Let's Build</h2>
       <div style="display:flex; gap:1.5rem; flex-wrap:wrap; margin-bottom:2rem;">
@@ -522,18 +525,6 @@
     </div>
   </div>
 
-  <!-- Logo Upload Modal -->
-  <div class="modal" id="logoModal">
-    <div class="modal-content" style="text-align:center;">
-      <span class="close-modal" onclick="document.getElementById('logoModal').classList.remove('active')">&times;</span>
-      <h3 style="font-family:'Orbitron',sans-serif;color:#d4af37;margin-bottom:1.5rem;">Upload Your Logo</h3>
-      <p style="font-family:'JetBrains Mono',monospace;color:#b8a16b;margin-bottom:1rem;">Click the logo placeholder to upload your logo image</p>
-      <input type="file" id="logoUpload" accept="image/*" style="display:none;">
-      <button class="btn btn-primary" onclick="document.getElementById('logoUpload').click()">Choose Image</button>
-      <button class="btn" style="margin-left:1rem;" onclick="resetLogo()">Reset to Default</button>
-    </div>
-  </div>
-
   <div class="toggle-bar">
     <div class="toggle-btn" id="darkModeToggle"><i class="fas fa-moon"></i></div>
     <div class="toggle-btn" id="soundToggle"><i class="fas fa-volume-up"></i></div>
@@ -565,75 +556,6 @@
       const loaderProgress=document.getElementById('loader-progress'),loadingPercent=document.getElementById('loading-percentage'),loadingScreen=document.getElementById('loading-screen'),mainContent=document.getElementById('main-content');
       let width=0;
       const interval=setInterval(()=>{width+=Math.random()*10+3;if(width>=100){width=100;clearInterval(interval);setTimeout(()=>{loadingScreen.style.opacity='0';loadingScreen.style.visibility='hidden';mainContent.style.opacity='1';setupAboutObserver();},500);}loaderProgress.style.width=width+'%';loadingPercent.textContent=Math.floor(width)+'%';},100);
-
-      // ============ LOGO UPLOAD ============
-      const heroLogo = document.getElementById('hero-logo');
-      const logoUpload = document.getElementById('logoUpload');
-      const logoModal = document.getElementById('logoModal');
-      
-      // Open logo upload modal when clicking the logo
-      heroLogo.addEventListener('click', () => {
-        logoModal.classList.add('active');
-      });
-
-      // Handle logo upload
-      logoUpload.addEventListener('change', function(e) {
-        const file = e.target.files[0];
-        if (file) {
-          const reader = new FileReader();
-          reader.onload = function(event) {
-            const img = document.createElement('img');
-            img.src = event.target.result;
-            img.style.width = '100%';
-            img.style.height = '100%';
-            img.style.objectFit = 'cover';
-            img.style.position = 'absolute';
-            img.style.top = '0';
-            img.style.left = '0';
-            
-            // Remove existing image if any
-            const existingImg = heroLogo.querySelector('img');
-            if (existingImg) existingImg.remove();
-            
-            // Hide fallback text
-            const fallback = heroLogo.querySelector('.logo-fallback');
-            if (fallback) fallback.style.display = 'none';
-            
-            heroLogo.appendChild(img);
-            logoModal.classList.remove('active');
-            
-            // Save to localStorage
-            localStorage.setItem('sjdev-logo', event.target.result);
-          };
-          reader.readAsDataURL(file);
-        }
-      });
-
-      // Reset logo
-      window.resetLogo = function() {
-        const existingImg = heroLogo.querySelector('img');
-        if (existingImg) existingImg.remove();
-        const fallback = heroLogo.querySelector('.logo-fallback');
-        if (fallback) fallback.style.display = '';
-        localStorage.removeItem('sjdev-logo');
-        logoModal.classList.remove('active');
-      };
-
-      // Load saved logo on startup
-      const savedLogo = localStorage.getItem('sjdev-logo');
-      if (savedLogo) {
-        const img = document.createElement('img');
-        img.src = savedLogo;
-        img.style.width = '100%';
-        img.style.height = '100%';
-        img.style.objectFit = 'cover';
-        img.style.position = 'absolute';
-        img.style.top = '0';
-        img.style.left = '0';
-        const fallback = heroLogo.querySelector('.logo-fallback');
-        if (fallback) fallback.style.display = 'none';
-        heroLogo.appendChild(img);
-      }
 
       // ============ BACKGROUND ============
       const particleCanvas=document.getElementById('particleCanvas'),pctx=particleCanvas.getContext('2d'),codeCanvas=document.getElementById('codeCanvas'),cctx=codeCanvas.getContext('2d');
@@ -734,31 +656,23 @@
           entries.forEach(entry => {
             if (entry.isIntersecting && !aboutAnimationsStarted) {
               aboutAnimationsStarted = true;
-              
               const line1 = document.getElementById('typing-line-1');
               const line2 = document.getElementById('typing-line-2');
-              
               typeLine(line1, textLine1, 30, () => {
                 setTimeout(() => {
                   typeLine(line2, textLine2, 28, () => {
-                    setTimeout(() => {
-                      startCounters();
-                    }, 300);
+                    setTimeout(() => { startCounters(); }, 300);
                   });
                 }, 200);
               });
-              
               observer.unobserve(aboutSection);
             }
           });
         }, { threshold: 0.25 });
-        
         observer.observe(aboutSection);
       }
 
-      document.querySelectorAll('.tag-item').forEach(tag => {
-        addRippleEffect(tag);
-      });
+      document.querySelectorAll('.tag-item').forEach(tag => { addRippleEffect(tag); });
 
       // ============ 3D CAROUSEL ============
       const projects=[{title:'Premium Hair',icon:'💇',industry:'Hair & Beauty'},{title:'Modern Barber',icon:'💈',industry:'Barber'},{title:'Restaurant',icon:'🍽️',industry:'Restaurant'},{title:'Liquor Store',icon:'🥃',industry:'Liquor'},{title:'Student Accomm',icon:'🏠',industry:'Real Estate'},{title:'Construction',icon:'🏗️',industry:'Construction'},{title:'Luxury Fragrance',icon:'✨',industry:'Fragrance'}];
@@ -787,7 +701,6 @@
       let sound=true;
       document.getElementById('soundToggle').addEventListener('click',function(){sound=!sound;this.innerHTML=sound?'<i class="fas fa-volume-up"></i>':'<i class="fas fa-volume-mute"></i>';});
 
-      // Smooth scroll
       document.querySelectorAll('a[href^="#"]').forEach(anchor=>{anchor.addEventListener('click',function(e){const href=this.getAttribute('href');if(href==='#')return;e.preventDefault();const target=document.querySelector(href);if(target)target.scrollIntoView({behavior:'smooth'});});});
 
     })();
