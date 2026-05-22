@@ -11,11 +11,7 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
-    :root {
-      --gold: #d4af37;
-      --gold-light: #f7e7a8;
-      --bg-deep: #010101;
-    }
+    :root { --gold: #d4af37; --gold-light: #f7e7a8; --bg-deep: #010101; }
     body {
       font-family: 'Inter', sans-serif;
       background: var(--bg-deep);
@@ -143,9 +139,7 @@
       font-size: 1.4rem; box-shadow: 0 0 35px rgba(212,175,55,0.4);
       cursor: pointer; transition: 0.3s;
     }
-    @media (max-width: 768px) {
-      .menu-toggle { width: 45px; height: 45px; top: 15px; right: 15px; }
-    }
+    @media (max-width: 768px) { .menu-toggle { width: 45px; height: 45px; top: 15px; right: 15px; } }
     .section { padding: 4rem 1.5rem; max-width: 1400px; margin: 0 auto; position: relative; z-index: 2; }
     @media (min-width: 768px) { .section { padding: 6rem 2rem; } }
     h2 {
@@ -179,7 +173,6 @@
     .btn-primary { background: #d4af37; color: #010101; box-shadow: 0 0 45px #d4af37; border: none; }
     .btn:hover { transform: translateY(-3px); box-shadow: 0 15px 40px rgba(212,175,55,0.4); }
 
-    /* Logo container */
     .logo-container {
       width: 120px; height: 120px; border-radius: 50%;
       border: 2px solid rgba(212,175,55,0.6);
@@ -245,30 +238,20 @@
       animation: rippleAnim 0.8s ease-out forwards;
       pointer-events: none;
     }
-    @keyframes rippleAnim {
-      to { transform: scale(4); opacity: 0; }
-    }
+    @keyframes rippleAnim { to { transform: scale(4); opacity: 0; } }
     .translucent-text {
       font-family: 'Orbitron', sans-serif;
       font-size: clamp(3rem, 10vw, 8rem); font-weight: 900;
       color: rgba(212,175,55,0.06); position: absolute;
       pointer-events: none; user-select: none; letter-spacing: 10px; white-space: nowrap;
     }
-    .typing-container {
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 1rem; line-height: 1.8; max-width: 800px;
-    }
+    .typing-container { font-family: 'JetBrains Mono', monospace; font-size: 1rem; line-height: 1.8; max-width: 800px; }
     .typing-text {
-      border-right: 3px solid #d4af37;
-      padding-right: 3px;
+      border-right: 3px solid #d4af37; padding-right: 3px;
       animation: cursorBlink 0.8s step-end infinite;
-      white-space: pre-wrap;
-      word-break: break-word;
+      white-space: pre-wrap; word-break: break-word;
     }
-    .typing-text.done {
-      border-right: none;
-      animation: none;
-    }
+    .typing-text.done { border-right: none; animation: none; }
     @keyframes cursorBlink {
       0%, 100% { border-color: #d4af37; }
       50% { border-color: transparent; }
@@ -278,11 +261,7 @@
       font-size: 2.5rem; font-weight: 900; color: #d4af37;
       display: inline-block;
     }
-    .fx-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 2rem; margin-top: 2rem;
-    }
+    .fx-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem; margin-top: 2rem; }
     .fx-card {
       background: rgba(10,10,18,0.5); backdrop-filter: blur(20px);
       border: 1px solid rgba(212,175,55,0.2); border-radius: 30px;
@@ -316,7 +295,7 @@
     .modal-content {
       background: rgba(10,10,20,0.9); backdrop-filter: blur(25px);
       border: 1px solid #d4af37; border-radius: 35px; padding: 2.5rem;
-      width: 90%; max-width: 600px; position: relative;
+      width: 90%; max-width: 600px; position: relative; text-align: center;
     }
     .close-modal { position: absolute; top: 15px; right: 20px; font-size: 2rem; color: #d4af37; cursor: pointer; }
     .toggle-bar { position: fixed; bottom: 20px; left: 20px; display: flex; gap: 0.8rem; z-index: 9996; }
@@ -383,18 +362,15 @@
   <div class="menu-toggle" onclick="toggleMenu()"><i class="fas fa-bars"></i></div>
 
   <main id="main-content" style="opacity:0; transition: opacity 1.2s;">
-    <!-- HERO with Logo -->
     <section class="hero section" id="home">
       <div class="translucent-text" style="top:10%; left:0;">&lt;DEV&gt;</div>
       <div style="display:flex; align-items:center; gap:2rem; flex-wrap:wrap; margin-bottom:2rem;">
         
         <!-- ============================================ -->
-        <!-- LOGO IMAGE - REPLACE SRC HERE               -->
-        <!-- Change "logo.png" to your image filename     -->
-        <!-- OR use a full URL like "https://example.com/logo.jpg" -->
+        <!-- LOGO IMAGE - CHANGE src TO YOUR IMAGE FILE   -->
         <!-- ============================================ -->
         <div class="logo-container">
-          <img src="file_0000000019c872308a2d73127e953ede.png" alt="SJ Dev Logo">
+          <img src="logo.png" alt="SJ Dev Logo">
         </div>
         <!-- ============================================ -->
         
@@ -417,7 +393,6 @@
       </div>
     </section>
 
-    <!-- ABOUT SECTION -->
     <section class="section" id="about" style="position:relative;">
       <div class="translucent-text" style="top:0; right:0; font-size:5rem;">ABOUT</div>
       <h2>About SJ Dev</h2>
@@ -441,7 +416,6 @@
       </div>
     </section>
 
-    <!-- PORTFOLIO -->
     <section class="section" id="portfolio" style="position:relative;">
       <div class="translucent-text" style="top:0; left:10%;">WORKS</div>
       <h2>3D Interactive Showcase</h2>
@@ -455,7 +429,6 @@
       </div>
     </section>
 
-    <!-- FX LAB -->
     <section class="section" id="fxlab" style="position:relative;">
       <div class="translucent-text" style="top:0; right:5%; font-size:4rem;">FX LAB</div>
       <h2>Animation & Effects Lab</h2>
@@ -469,7 +442,6 @@
       </div>
     </section>
 
-    <!-- TESTIMONIALS -->
     <section class="section"><h2>Client Trust</h2>
       <div style="display:flex; gap:1.5rem; flex-wrap:wrap;">
         <div class="glass-card" style="flex:1;min-width:250px;"><p style="font-family:'JetBrains Mono',monospace;">"My barber shop now looks like a $50K brand."</p><strong style="color:#d4af37;">– Lwazi</strong></div>
@@ -477,23 +449,16 @@
       </div>
     </section>
 
-    <!-- CONTACT -->
     <section class="section" id="contact">
       <h2>Let's Build</h2>
       <div style="display:flex; gap:1.5rem; flex-wrap:wrap; margin-bottom:2rem;">
         <div class="contact-info-card" onclick="window.location.href='mailto:Vhuthundou562@gmail.com'">
           <i class="fas fa-envelope"></i>
-          <div>
-            <p style="color:#b8a16b; font-size:0.7rem;">Email</p>
-            <p style="color:#d4af37;">Vhuthundou562@gmail.com</p>
-          </div>
+          <div><p style="color:#b8a16b; font-size:0.7rem;">Email</p><p style="color:#d4af37;">Vhuthundou562@gmail.com</p></div>
         </div>
         <div class="contact-info-card" onclick="window.location.href='tel:0834878488'">
           <i class="fas fa-phone"></i>
-          <div>
-            <p style="color:#b8a16b; font-size:0.7rem;">Phone / WhatsApp</p>
-            <p style="color:#d4af37;">083 487 8488</p>
-          </div>
+          <div><p style="color:#b8a16b; font-size:0.7rem;">Phone / WhatsApp</p><p style="color:#d4af37;">083 487 8488</p></div>
         </div>
       </div>
       <div style="max-width:600px;">
@@ -511,13 +476,13 @@
     </footer>
   </main>
 
-  <!-- Project Modal -->
   <div class="modal" id="projectModal">
     <div class="modal-content">
       <span class="close-modal" onclick="closeModal()">&times;</span>
       <h3 id="modalTitle" style="font-family:'Orbitron',sans-serif;color:#d4af37;"></h3>
       <p id="modalDesc" style="font-family:'JetBrains Mono',monospace;margin:1rem 0;"></p>
-      <div style="display:flex;gap:1rem;flex-wrap:wrap;margin-top:1.5rem;">
+      <div id="modalLinkContainer" style="margin-top:1.5rem;"></div>
+      <div style="display:flex;gap:1rem;flex-wrap:wrap;margin-top:1.5rem;justify-content:center;">
         <span class="glass-card" style="padding:0.5rem 1rem;">📱 Mobile Optimized</span>
         <span class="glass-card" style="padding:0.5rem 1rem;">⚡ Fast Performance</span>
         <span class="glass-card" style="padding:0.5rem 1rem;">🎨 Premium UI</span>
@@ -587,7 +552,6 @@
         element.textContent = '';
         element.classList.remove('done');
         element.style.borderRight = '3px solid #d4af37';
-        
         function type() {
           if (index < text.length) {
             element.textContent += text.charAt(index);
@@ -607,44 +571,34 @@
         const target = parseInt(element.getAttribute('data-target'));
         const duration = 1800;
         const startTime = performance.now();
-        
         function update(currentTime) {
           const elapsed = currentTime - startTime;
           const progress = Math.min(elapsed / duration, 1);
           const eased = 1 - Math.pow(1 - progress, 3);
           const current = Math.floor(eased * target);
           element.textContent = current;
-          if (progress < 1) {
-            requestAnimationFrame(update);
-          } else {
-            element.textContent = target;
-          }
+          if (progress < 1) { requestAnimationFrame(update); } else { element.textContent = target; }
         }
         requestAnimationFrame(update);
       }
 
       function startCounters() {
-        document.querySelectorAll('.counter-number').forEach(counter => {
-          animateCounter(counter);
-        });
+        document.querySelectorAll('.counter-number').forEach(counter => { animateCounter(counter); });
       }
 
       function addRippleEffect(element) {
         element.addEventListener('click', function(e) {
           const existingRipples = this.querySelectorAll('.ripple-span');
           existingRipples.forEach(r => r.remove());
-          
           const ripple = document.createElement('span');
           ripple.className = 'ripple-span';
           const rect = this.getBoundingClientRect();
           const size = Math.max(rect.width, rect.height) * 2.5;
           const x = e.clientX - rect.left - size / 2;
           const y = e.clientY - rect.top - size / 2;
-          
           ripple.style.width = ripple.style.height = size + 'px';
           ripple.style.left = x + 'px';
           ripple.style.top = y + 'px';
-          
           this.appendChild(ripple);
           ripple.addEventListener('animationend', () => ripple.remove());
         });
@@ -674,34 +628,118 @@
 
       document.querySelectorAll('.tag-item').forEach(tag => { addRippleEffect(tag); });
 
-      // ============ 3D CAROUSEL ============
-      const projects=[{title:'Premium Hair',icon:'💇',industry:'Hair & Beauty'},{title:'Modern Barber',icon:'💈',industry:'Barber'},{title:'Restaurant',icon:'🍽️',industry:'Restaurant'},{title:'Liquor Store',icon:'🥃',industry:'Liquor'},{title:'Student Accomm',icon:'🏠',industry:'Real Estate'},{title:'Construction',icon:'🏗️',industry:'Construction'},{title:'Luxury Fragrance',icon:'✨',industry:'Fragrance'}];
-      const carousel3d=document.getElementById('carousel3d'),carouselContainer=document.getElementById('carouselContainer');
-      let currentAngle=0,totalCards=projects.length,angleStep=360/totalCards,radius=window.innerWidth<768?300:450;
+      // ============================================
+      // 3D CAROUSEL - PUT YOUR WEBSITE LINKS HERE
+      // ============================================
+      const projects = [
+        {
+          title: 'Premium Hair',
+          icon: '💇',
+          industry: 'Hair & Beauty',
+          link: 'https://your-hair-website.com'       // ← CHANGE THIS
+        },
+        {
+          title: 'Modern Barber',
+          icon: '💈',
+          industry: 'Barber',
+          link: 'https://your-barber-website.com'    // ← CHANGE THIS
+        },
+        {
+          title: 'Restaurant',
+          icon: '🍽️',
+          industry: 'Restaurant',
+          link: 'https://your-restaurant-website.com' // ← CHANGE THIS
+        },
+        {
+          title: 'Liquor Store',
+          icon: '🥃',
+          industry: 'Liquor',
+          link: 'https://your-liquor-website.com'    // ← CHANGE THIS
+        },
+        {
+          title: 'Student Accomm',
+          icon: '🏠',
+          industry: 'Real Estate',
+          link: 'https://your-accommodation-website.com' // ← CHANGE THIS
+        },
+        {
+          title: 'Construction',
+          icon: '🏗️',
+          industry: 'Construction',
+          link: 'https://your-construction-website.com' // ← CHANGE THIS
+        },
+        {
+          title: 'Luxury Fragrance',
+          icon: '✨',
+          industry: 'Fragrance',
+          link: 'https://your-fragrance-website.com' // ← CHANGE THIS
+        }
+      ];
+      // ============================================
 
-      projects.forEach((p,i)=>{const card=document.createElement('div');card.className='carousel-card';card.innerHTML=`<div class="carousel-icon">${p.icon}</div><h3>${p.title}</h3><p>${p.industry}</p>`;card.addEventListener('click',e=>{e.stopPropagation();document.getElementById('modalTitle').innerText=p.title;document.getElementById('modalDesc').innerText=`${p.industry} – premium mobile-first design with elite animations.`;document.getElementById('projectModal').classList.add('active');});carousel3d.appendChild(card);});
+      const carousel3d = document.getElementById('carousel3d');
+      const carouselContainer = document.getElementById('carouselContainer');
+      let currentAngle = 0;
+      const totalCards = projects.length;
+      const angleStep = 360 / totalCards;
+      let radius = window.innerWidth < 768 ? 300 : 450;
 
-      function updateCarousel(angle){currentAngle=angle%360;carousel3d.style.transform=`rotateY(${currentAngle}deg)`;const cards=carousel3d.querySelectorAll('.carousel-card');cards.forEach((card,i)=>{const cardAngle=i*angleStep;card.style.transform=`rotateY(${cardAngle}deg) translateZ(${radius}px)`;const normalizedAngle=((cardAngle+currentAngle)%360+360)%360;if(normalizedAngle<15||normalizedAngle>345)card.classList.add('active-card');else card.classList.remove('active-card');});}
+      projects.forEach((p, i) => {
+        const card = document.createElement('div');
+        card.className = 'carousel-card';
+        card.innerHTML = `<div class="carousel-icon">${p.icon}</div><h3>${p.title}</h3><p>${p.industry}</p>`;
+        
+        card.addEventListener('click', e => {
+          e.stopPropagation();
+          document.getElementById('modalTitle').innerText = p.title;
+          document.getElementById('modalDesc').innerText = `${p.industry} – premium mobile-first design with elite animations.`;
+          
+          // Add the "View Live Website" button
+          const linkContainer = document.getElementById('modalLinkContainer');
+          if (p.link && p.link !== '#' && !p.link.includes('your-')) {
+            linkContainer.innerHTML = `<a href="${p.link}" target="_blank" rel="noopener" class="btn btn-primary" style="display:inline-block;"><i class="fas fa-external-link-alt"></i> View Live Website</a>`;
+          } else {
+            linkContainer.innerHTML = `<p style="font-family:'JetBrains Mono',monospace; color:#b8a16b; font-size:0.8rem;">🔗 Link coming soon</p>`;
+          }
+          
+          document.getElementById('projectModal').classList.add('active');
+        });
+        
+        carousel3d.appendChild(card);
+      });
+
+      function updateCarousel(angle) {
+        currentAngle = angle % 360;
+        carousel3d.style.transform = `rotateY(${currentAngle}deg)`;
+        const cards = carousel3d.querySelectorAll('.carousel-card');
+        cards.forEach((card, i) => {
+          const cardAngle = i * angleStep;
+          card.style.transform = `rotateY(${cardAngle}deg) translateZ(${radius}px)`;
+          const normalizedAngle = ((cardAngle + currentAngle) % 360 + 360) % 360;
+          if (normalizedAngle < 15 || normalizedAngle > 345) card.classList.add('active-card');
+          else card.classList.remove('active-card');
+        });
+      }
       updateCarousel(0);
 
-      carouselContainer.addEventListener('wheel',e=>{e.preventDefault();currentAngle+=e.deltaY*0.3;updateCarousel(currentAngle);},{passive:false});
-      let touchStartX=0,touchActive=false;
-      carouselContainer.addEventListener('touchstart',e=>{touchStartX=e.touches[0].clientX;touchActive=true;});
-      carouselContainer.addEventListener('touchmove',e=>{if(!touchActive)return;const touchX=e.touches[0].clientX;const delta=touchStartX-touchX;currentAngle+=delta*0.5;touchStartX=touchX;updateCarousel(currentAngle);});
-      carouselContainer.addEventListener('touchend',()=>{touchActive=false;});
-      document.getElementById('prevBtn').addEventListener('click',()=>{currentAngle-=angleStep;updateCarousel(currentAngle);});
-      document.getElementById('nextBtn').addEventListener('click',()=>{currentAngle+=angleStep;updateCarousel(currentAngle);});
-      window.addEventListener('resize',()=>{radius=window.innerWidth<768?300:450;const cards=carousel3d.querySelectorAll('.carousel-card');cards.forEach((card,i)=>{card.style.transform=`rotateY(${i*angleStep}deg) translateZ(${radius}px)`;});});
+      carouselContainer.addEventListener('wheel', e => { e.preventDefault(); currentAngle += e.deltaY * 0.3; updateCarousel(currentAngle); }, { passive: false });
+      let touchStartX = 0, touchActive = false;
+      carouselContainer.addEventListener('touchstart', e => { touchStartX = e.touches[0].clientX; touchActive = true; });
+      carouselContainer.addEventListener('touchmove', e => { if (!touchActive) return; const touchX = e.touches[0].clientX; const delta = touchStartX - touchX; currentAngle += delta * 0.5; touchStartX = touchX; updateCarousel(currentAngle); });
+      carouselContainer.addEventListener('touchend', () => { touchActive = false; });
+      document.getElementById('prevBtn').addEventListener('click', () => { currentAngle -= angleStep; updateCarousel(currentAngle); });
+      document.getElementById('nextBtn').addEventListener('click', () => { currentAngle += angleStep; updateCarousel(currentAngle); });
+      window.addEventListener('resize', () => { radius = window.innerWidth < 768 ? 300 : 450; const cards = carousel3d.querySelectorAll('.carousel-card'); cards.forEach((card, i) => { card.style.transform = `rotateY(${i * angleStep}deg) translateZ(${radius}px)`; }); });
 
       // ============ MODAL ============
-      window.closeModal=()=>document.getElementById('projectModal').classList.remove('active');
+      window.closeModal = () => document.getElementById('projectModal').classList.remove('active');
 
       // ============ TOGGLES ============
-      document.getElementById('darkModeToggle').addEventListener('click',()=>document.body.classList.toggle('light-mode'));
-      let sound=true;
-      document.getElementById('soundToggle').addEventListener('click',function(){sound=!sound;this.innerHTML=sound?'<i class="fas fa-volume-up"></i>':'<i class="fas fa-volume-mute"></i>';});
+      document.getElementById('darkModeToggle').addEventListener('click', () => document.body.classList.toggle('light-mode'));
+      let sound = true;
+      document.getElementById('soundToggle').addEventListener('click', function() { sound = !sound; this.innerHTML = sound ? '<i class="fas fa-volume-up"></i>' : '<i class="fas fa-volume-mute"></i>'; });
 
-      document.querySelectorAll('a[href^="#"]').forEach(anchor=>{anchor.addEventListener('click',function(e){const href=this.getAttribute('href');if(href==='#')return;e.preventDefault();const target=document.querySelector(href);if(target)target.scrollIntoView({behavior:'smooth'});});});
+      document.querySelectorAll('a[href^="#"]').forEach(anchor => { anchor.addEventListener('click', function(e) { const href = this.getAttribute('href'); if (href === '#') return; e.preventDefault(); const target = document.querySelector(href); if (target) target.scrollIntoView({ behavior: 'smooth' }); }); });
 
     })();
   </script>
