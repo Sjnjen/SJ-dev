@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -173,18 +174,20 @@
     .btn-primary { background: #d4af37; color: #010101; box-shadow: 0 0 45px #d4af37; border: none; }
     .btn:hover { transform: translateY(-3px); box-shadow: 0 15px 40px rgba(212,175,55,0.4); }
 
+    /* BORDERLESS LOGO CONTAINER */
     .logo-container {
-      width: 120px; height: 120px; border-radius: 50%;
-      border: 2px solid rgba(212,175,55,0.6);
-      background: rgba(10,10,18,0.6); backdrop-filter: blur(20px);
+      width: 120px; height: 120px;
+      background: transparent; backdrop-filter: none;
       display: flex; align-items: center; justify-content: center;
-      box-shadow: 0 0 40px rgba(212,175,55,0.3);
-      overflow: hidden; position: relative;
+      overflow: visible; position: relative;
       flex-shrink: 0;
+      border: none;
+      box-shadow: none;
     }
     .logo-container img {
-      width: 100%; height: 100%; object-fit: cover;
-      position: absolute; top: 0; left: 0;
+      width: 100%; height: 100%; object-fit: contain;
+      position: relative; top: auto; left: auto;
+      filter: drop-shadow(0 0 25px rgba(212,175,55,0.4));
     }
 
     .carousel-container {
@@ -367,7 +370,7 @@
       <div style="display:flex; align-items:center; gap:2rem; flex-wrap:wrap; margin-bottom:2rem;">
         
         <!-- ============================================ -->
-        <!-- LOGO IMAGE - CHANGE src TO YOUR IMAGE FILE   -->
+        <!-- BORDERLESS LOGO - CHANGE src TO YOUR IMAGE   -->
         <!-- ============================================ -->
         <div class="logo-container">
           <img src="file_0000000019c872308a2d73127e953ede.png" alt="SJ Dev Logo">
@@ -632,48 +635,13 @@
       // 3D CAROUSEL - PUT YOUR WEBSITE LINKS HERE
       // ============================================
       const projects = [
-        {
-          title: 'Premium Hair',
-          icon: '💇',
-          industry: 'Hair & Beauty',
-          link: 'https://sjnjen.github.io/Shachah-does-hair/'       // ← CHANGE THIS
-        },
-        {
-          title: 'Modern Barber',
-          icon: '💈',
-          industry: 'Barber',
-          link: 'https://sjnjen.github.io/Unique-Barber/'    // ← CHANGE THIS
-        },
-        {
-          title: 'Restaurant',
-          icon: '🍽️',
-          industry: 'Restaurant',
-          link: 'https://your-restaurant-website.com' // ← CHANGE THIS
-        },
-        {
-          title: 'Liquor Store',
-          icon: '🥃',
-          industry: 'Liquor',
-          link: 'https://sjnjen.github.io/Village-Bev/'    // ← CHANGE THIS
-        },
-        {
-          title: 'Student Accomm',
-          icon: '🏠',
-          industry: 'Real Estate',
-          link: 'https://sjnjen.github.io/Retema-accommodation/' // ← CHANGE THIS
-        },
-        {
-          title: 'Construction',
-          icon: '🏗️',
-          industry: 'Construction',
-          link: 'https://your-construction-website.com' // ← CHANGE THIS
-        },
-        {
-          title: 'Luxury Fragrance',
-          icon: '✨',
-          industry: 'Fragrance',
-          link: 'https://sjnjen.github.io/Patron-FRAGRANCE/' // ← CHANGE THIS
-        }
+        { title: 'Premium Hair', icon: '💇', industry: 'Hair & Beauty', link: 'https://sjnjen.github.io/Shachah-does-hair/' },
+        { title: 'Modern Barber', icon: '💈', industry: 'Barber', link: 'https://sjnjen.github.io/Unique-Barber/' },
+        { title: 'Restaurant', icon: '🍽️', industry: 'Restaurant', link: 'https://your-restaurant-website.com' },
+        { title: 'Liquor Store', icon: '🥃', industry: 'Liquor', link: 'https://sjnjen.github.io/Village-Bev/' },
+        { title: 'Student Accomm', icon: '🏠', industry: 'Real Estate', link: 'https://sjnjen.github.io/Retema-accommodation/' },
+        { title: 'Construction', icon: '🏗️', industry: 'Construction', link: 'https://your-construction-website.com' },
+        { title: 'Luxury Fragrance', icon: '✨', industry: 'Fragrance', link: 'https://sjnjen.github.io/Patron-FRAGRANCE/' }
       ];
       // ============================================
 
@@ -688,23 +656,18 @@
         const card = document.createElement('div');
         card.className = 'carousel-card';
         card.innerHTML = `<div class="carousel-icon">${p.icon}</div><h3>${p.title}</h3><p>${p.industry}</p>`;
-        
         card.addEventListener('click', e => {
           e.stopPropagation();
           document.getElementById('modalTitle').innerText = p.title;
           document.getElementById('modalDesc').innerText = `${p.industry} – premium mobile-first design with elite animations.`;
-          
-          // Add the "View Live Website" button
           const linkContainer = document.getElementById('modalLinkContainer');
           if (p.link && p.link !== '#' && !p.link.includes('your-')) {
             linkContainer.innerHTML = `<a href="${p.link}" target="_blank" rel="noopener" class="btn btn-primary" style="display:inline-block;"><i class="fas fa-external-link-alt"></i> View Live Website</a>`;
           } else {
             linkContainer.innerHTML = `<p style="font-family:'JetBrains Mono',monospace; color:#b8a16b; font-size:0.8rem;">🔗 Link coming soon</p>`;
           }
-          
           document.getElementById('projectModal').classList.add('active');
         });
-        
         carousel3d.appendChild(card);
       });
 
